@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout(~{::body})}">
+
+<body>
+<div class="text-center">
+    <h1 class="mb-4">Bienvenido a la Plataforma Académica</h1>
+
+    <p class="lead">Seleccione una opción para gestionar el sistema:</p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg m-2" th:href="@{/usuarios/listado}">
+            Gestión de Usuarios
+        </a>
+
+        <a class="btn btn-secondary btn-lg m-2" th:href="@{/roles/listado}">
+            Gestión de Roles
+        </a>
+    </div>
+</div>
+</body>
+</html>

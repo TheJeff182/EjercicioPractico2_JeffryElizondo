@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: contenido">
+
+<div>
+    <h2>Consulta: Buscar Usuarios por Nombre</h2>
+
+    <form method="get" action="/consultas/porNombre" class="mb-3">
+        <input name="texto" class="form-control" placeholder="Ingrese parte del nombre">
+        <button class="btn btn-primary mt-2">Buscar</button>
+    </form>
+
+    <table class="table table-bordered" th:if="${usuarios}">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="u : ${usuarios}">
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.nombre}"></td>
+                <td th:text="${u.email}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</html>

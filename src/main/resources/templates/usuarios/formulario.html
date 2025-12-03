@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: contenido}">
+
+<body>
+<div class="container">
+
+    <h2 class="mb-4">Formulario de Usuario</h2>
+
+    <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+
+        <input type="hidden" th:field="*{id}"/>
+
+        <!-- NOMBRE -->
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input class="form-control" th:field="*{nombre}" required>
+        </div>
+
+        <!-- APELLIDO -->
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input class="form-control" th:field="*{apellido}" required>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" th:field="*{email}" required>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="mb-3">
+            <label class="form-label">Contraseña</label>
+            <input class="form-control" th:field="*{password}" type="password" required>
+        </div>
+
+        <!-- ROL -->
+        <div class="mb-3">
+            <label class="form-label">Rol</label>
+            <select class="form-select" th:field="*{rol.id}" required>
+                <option th:each="r : ${roles}" th:value="${r.id}" th:text="${r.nombre}"></option>
+            </select>
+        </div>
+
+        <!-- ACTIVO -->
+        <div class="mb-3">
+            <label class="form-label">Activo</label>
+            <select class="form-select" th:field="*{activo}">
+                <option th:value="true">Sí</option>
+                <option th:value="false">No</option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Guardar</button>
+        <a class="btn btn-secondary" th:href="@{/usuarios/listado}">Cancelar</a>
+
+    </form>
+
+</div>
+</body>
+</html>

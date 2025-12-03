@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: layout(~{::body})">
+
+<body>
+
+<div class="container">
+
+    <h2>Nuevo Usuario</h2>
+
+    <form th:action="@{/usuarios/guardar}" method="post">
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input class="form-control" type="text" name="nombre" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input class="form-control" type="text" name="apellido" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input class="form-control" type="text" name="password" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Rol</label>
+            <select class="form-select" name="rol.id">
+                <option th:each="r : ${roles}"
+                        th:value="${r.id}"
+                        th:text="${r.nombre}">
+                </option>
+            </select>
+        </div>
+
+        <button class="btn btn-success">Guardar</button>
+        <a class="btn btn-secondary" th:href="@{/usuarios/listado}">Cancelar</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

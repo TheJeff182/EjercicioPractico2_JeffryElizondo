@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: layout(~{::body})">
+
+<body>
+
+<div class="container">
+
+    <h2>Editar Usuario</h2>
+
+    <form th:action="@{/usuarios/actualizar}" method="post">
+
+        <input type="hidden" name="id" th:value="${usuario.id}">
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" th:value="${usuario.nombre}">
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido</label>
+            <input class="form-control" name="apellido" th:value="${usuario.apellido}">
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control" name="email" th:value="${usuario.email}">
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input class="form-control" name="password" th:value="${usuario.password}">
+        </div>
+
+        <div class="mb-3">
+            <label>Rol</label>
+            <select class="form-select" name="rol.id">
+                <option th:each="r : ${roles}"
+                        th:value="${r.id}"
+                        th:selected="${r.id == usuario.rol.id}"
+                        th:text="${r.nombre}">
+                </option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary">Actualizar</button>
+        <a class="btn btn-secondary" th:href="@{/usuarios/listado}">Cancelar</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

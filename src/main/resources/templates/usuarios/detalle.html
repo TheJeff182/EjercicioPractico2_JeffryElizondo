@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: layout(~{::body})">
+
+<body>
+
+<div class="container">
+
+    <h2>Detalle del Usuario</h2>
+
+    <ul class="list-group">
+
+        <li class="list-group-item">
+            <strong>ID:</strong> <span th:text="${usuario.id}"></span>
+        </li>
+
+        <li class="list-group-item">
+            <strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span>
+        </li>
+
+        <li class="list-group-item">
+            <strong>Apellido:</strong> <span th:text="${usuario.apellido}"></span>
+        </li>
+
+        <li class="list-group-item">
+            <strong>Email:</strong> <span th:text="${usuario.email}"></span>
+        </li>
+
+        <li class="list-group-item">
+            <strong>Rol:</strong> <span th:text="${usuario.rol.nombre}"></span>
+        </li>
+
+        <li class="list-group-item">
+            <strong>Activo:</strong>
+            <span th:text="${usuario.activo ? 'Sí' : 'No'}"></span>
+        </li>
+
+    </ul>
+
+    <a class="btn btn-secondary mt-3" th:href="@{/usuarios/listado}">Volver</a>
+
+</div>
+
+</body>
+</html>
